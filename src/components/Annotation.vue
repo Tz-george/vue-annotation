@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Model, Prop, Vue} from 'vue-property-decorator';
+import {Component, Emit, Model, Prop, Vue} from 'vue-property-decorator';
 import Annotation, {AnnotationType, newPoints, newRect, Point, Rect, RectangularVertices} from './Annotation';
 import RectAnnotation from '@/components/RectAnnotation.vue';
 import {UUID} from '@/utils/utils';
@@ -43,7 +43,7 @@ export default class ImageAnnotation extends Vue {
   public isNewAnnotation: boolean = false;
   // 新标注的类型(设置为可选类型）
   public newAnnotationType!: AnnotationType;
-  //
+  // 临时标注
   public tempAnnotation: Rect | Point[] | null = null;
 
   public newAnnotation(type: AnnotationType = AnnotationType.Rect, annotation?: Annotation) {
@@ -70,8 +70,10 @@ export default class ImageAnnotation extends Vue {
     }
   }
 
+  @Emit('setNowAnnotation')
   public setNowAnnotation(annotation: Annotation) {
     this.nowAnnotation = annotation;
+    return annotation;
   }
 
   public dragStart(event: MouseEvent) {
