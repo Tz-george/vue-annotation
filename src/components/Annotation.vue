@@ -46,9 +46,13 @@ export default class ImageAnnotation extends Vue {
   //
   public tempAnnotation: Rect | Point[] | null = null;
 
-  public newAnnotation(type: AnnotationType = AnnotationType.Rect) {
-    this.isNewAnnotation = true;
-    this.newAnnotationType = type;
+  public newAnnotation(type: AnnotationType = AnnotationType.Rect, annotation?: Annotation) {
+    if (annotation) {
+      this.annotations.push(annotation);
+    } else {
+      this.isNewAnnotation = true;
+      this.newAnnotationType = type;
+    }
   }
 
   public deleteAnnotation(by?: string, value?: number | string) {
