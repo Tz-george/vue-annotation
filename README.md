@@ -1,29 +1,15 @@
-# vue-image-annotation
+# 标注组件
 
-## Project setup
-```
-yarn install
-```
+这是一个标注组件，可实现两个功能的标注：点选标注和框选标注
 
-### Compiles and hot-reloads for development
-```
-yarn serve
+## 使用方式
+
+```js
+npm install vue-annotation
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+在任何组件中 import 该组件
 
-### Run your unit tests
+```js
+import Annotation from "vue-annotation";
 ```
-yarn test:unit
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
